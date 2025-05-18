@@ -76,4 +76,4 @@ This repository is open-source under the [MIT License](LICENSE).
 
 ---
 
-*Maintained by [Jeffrey Som](https://www.linkedin.com/in/jeffrey-som/)*
+*Maintained by [Jeffrey Som](https://www.linkedin.com/in/jeffreysom/)*
