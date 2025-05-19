@@ -119,6 +119,8 @@ Once you're back up:
 ip a
 ```
 
+![Untitled](https://github.com/jsom98/KBPictures/blob/main/SS7.png)
+
 Check that your IP under `eth0` (or `wlan0`) matches what you set.
 
 ---
