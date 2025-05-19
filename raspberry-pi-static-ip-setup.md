@@ -1,6 +1,16 @@
-# 🧠 Raspberry Pi 5 – Static IP Address Setup (KB Guide)
+# 📡 Raspberry Pi 5 – Static IP Configuration Guide
 
-**Goal:** Set up a static IP address on your Raspberry Pi 5 so you can always find it on your network — no more guessing which IP it grabbed this time!
+> Last updated: [5/19/2025]  
+> Author: Jeffrey Som  
+> Tags: Raspberry Pi, Static IP, Networking, DHCP, Linux
+
+---
+
+## 📝 Overview
+
+Assigning a **static IP address** to your Raspberry Pi ensures that its network identity stays consistent across reboots and power cycles—especially helpful for headless setups or when hosting local services like Pi-hole.
+
+This guide walks through configuring a **static IP address** on a Raspberry Pi 5 running Raspberry Pi OS (Bookworm or Bullseye), using both CLI (headless) and GUI (desktop) methods.
 
 ---
 
@@ -21,6 +31,8 @@ Always begin by making sure your system is current:
 sudo apt update && sudo apt full-upgrade -y
 ```
 
+![Untitled](https://github.com/jsom98/KBPictures/blob/main/SS1.png)
+
 This helps avoid weird surprises later.
 
 ---
@@ -32,6 +44,8 @@ Just in case it’s missing or corrupted, reinstall it:
 ```
 sudo apt install --reinstall dhcpcd5 -y
 ```
+
+![Untitled](https://github.com/jsom98/KBPictures/blob/main/SS2.png)
 
 Think of `dhcpcd` as your Pi's network butler—it needs to be around to set the rules.
 
@@ -57,6 +71,9 @@ Open the config file:
 sudo nano /etc/dhcpcd.conf
 ```
 
+![Untitled](https://github.com/jsom98/KBPictures/blob/main/SS3.png)
+![Untitled](https://github.com/jsom98/KBPictures/blob/main/SS4.png)
+
 Now scroll to the bottom and add your settings. Example for Ethernet (`eth0`):
 
 ```
@@ -65,6 +82,8 @@ static ip_address=192.168.5.10/24
 static routers=192.168.5.1
 static domain_name_servers=1.1.1.1 8.8.8.8
 ```
+
+![Untitled](https://github.com/jsom98/KBPictures/blob/main/SS5.png)
 
 ✨ *If you're on Wi-Fi, change `eth0` to `wlan0`.*
 
