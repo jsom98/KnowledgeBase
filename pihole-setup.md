@@ -1,6 +1,6 @@
 # 🧠 Pi-hole Setup & Configuration Guide
 
-> Last updated: [Insert Date]  
+> Last updated: [5/19/2025]  
 > Author: Jeffrey Som  
 > Tags: DNS, Raspberry Pi, Ad Blocking, Network Security, Home Lab
 
