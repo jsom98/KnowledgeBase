@@ -34,10 +34,10 @@ sudo apt update && sudo apt full-upgrade -y
 ## 📥 Step 2: Install Cloudflared
 
 ```
-sudo apt install curl -y
-curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64 -o cloudflared
-chmod +x cloudflared
-sudo mv cloudflared /usr/local/bin
+wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64
+sudo mv -f ./cloudflared-linux-arm64 /usr/local/bin/cloudflared
+sudo chmod +x /usr/local/bin/cloudflared
+cloudflared -v
 ```
 
 Test it works:
@@ -50,21 +50,59 @@ cloudflared --version
 
 ## 🛠️ Step 3: Create the Cloudflared Service
 
+Create a cloudflared user to run the daemon:
+
+```
+sudo useradd -s /usr/sbin/nologin -r -M cloudflared
+```
+
+Proceed to create a configuration file for cloudflared:
+
+```
+sudo nano /etc/default/cloudflared
+```
+
+Edit configuration file by copying the following in to /etc/default/cloudflared. This file contains the command-line options that get passed to cloudflared on startup:
+
+```
+# Commandline args for cloudflared, using Cloudflare DNS
+CLOUDFLARED_OPTS=--port 5053 --upstream https://cloudflare-dns.com/dns-query
+```
+
+You will edit the command line up to the first upstream URLS
+Example:
+
+```
+# Commandline args for cloudflared, using Cloudflare DNS
+CLOUDFLARED_OPTS=--port 5053 --upstream https://2ziabcpo86.cloudflare-gateway.com/dns-query
+```
+
+Update the permissions for the configuration file and cloudflared binary to allow access for the cloudflared user:
+
+```
+sudo chown cloudflared:cloudflared /etc/default/cloudflared
+sudo chown cloudflared:cloudflared /usr/local/bin/cloudflared
+```
+
+Then create the systemd script by copying the following into /etc/systemd/system/cloudflared.service. This will control the running of the service and allow it to run on startup:
+
 ```
 sudo nano /etc/systemd/system/cloudflared.service
 ```
 
-Paste this:
-
 ```
 [Unit]
 Description=cloudflared DNS over HTTPS proxy
-After=network.target
+After=syslog.target network-online.target
 
 [Service]
-ExecStart=/usr/local/bin/cloudflared proxy-dns --port 5053 --upstream https://1.1.1.1/dns-query --upstream https://1.0.0.1/dns-query
+Type=simple
+User=cloudflared
+EnvironmentFile=/etc/default/cloudflared
+ExecStart=/usr/local/bin/cloudflared proxy-dns $CLOUDFLARED_OPTS
 Restart=on-failure
-User=nobody
+RestartSec=10
+KillMode=process
 
 [Install]
 WantedBy=multi-user.target
