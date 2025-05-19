@@ -99,11 +99,15 @@ Let the changes take effect:
 sudo systemctl restart dhcpcd
 ```
 
+![Untitled](https://github.com/jsom98/KBPictures/blob/main/SS6.png)
+
 Or just reboot if you want to be thorough:
 
 ```
 sudo reboot
 ```
+
+![Untitled](https://github.com/jsom98/KBPictures/blob/main/SS7.png)
 
 ---
 
