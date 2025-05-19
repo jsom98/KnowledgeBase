@@ -82,6 +82,8 @@ Use the following command to secure your dashboard:
 pihole setpassword
 ```
 
+![Untitled](https://github.com/jsom98/KBPictures/blob/main/SS10.png)
+
 🔸 Leave the password blank to remove it (not recommended).  
 🔸 Run this again anytime you need to reset access.
 
@@ -138,4 +140,3 @@ Let me know if you want to take it further with:
 - 🚪 PiVPN integration
 - 🔒 Unbound for DNS over HTTPS
 - ☁️ Cloud backups
-
