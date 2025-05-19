@@ -51,6 +51,8 @@ Run the official one-liner script:
 curl -sSL https://install.pi-hole.net | bash
 ```
 
+![Untitled](https://github.com/jsom98/KBPictures/blob/main/SS9.png)
+
 This will launch a text-based installer. Walk through the prompts carefully. Choose your network interface, upstream DNS provider (Cloudflare is a solid pick), and whether to block IPv6.
 
 ---
