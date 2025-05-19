@@ -79,7 +79,7 @@ Bookmark this page — it’s where you manage blacklists, view DNS logs, and se
 Use the following command to secure your dashboard:
 
 ```
-pihole -a -p
+pihole setpassword
 ```
 
 🔸 Leave the password blank to remove it (not recommended).  
