@@ -20,6 +20,15 @@ This guide covers:
 
 ---
 
+## 🚀 What You’ll Need
+
+✅ A Raspberry Pi 5  
+✅ Raspberry Pi OS (Lite or Desktop)  
+✅ Terminal access (keyboard, SSH, or remote tools)  
+✅ Your desired static IP info (IP, gateway, DNS)
+
+---
+
 ## ⚙️ Step 1: Update Your Pi
 
 ```
