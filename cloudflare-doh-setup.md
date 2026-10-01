@@ -1,8 +1,14 @@
 # ☁️ Raspberry Pi 5 – Cloudflare DNS-over-HTTPS (DoH) Setup
 
 **Last updated:** 5/19/2025
+
+
 **Author:** Jeffrey Som
+
+
 **Tags:** Raspberry Pi, Cloudflare, DNS-over-HTTPS, DoH, Privacy, Network Security
+
+
 
 ## 📝 Overview
 
